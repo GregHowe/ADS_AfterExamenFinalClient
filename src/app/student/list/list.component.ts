@@ -76,17 +76,17 @@ export class ListComponent implements OnInit {
 
   }
 
-  calculateAmount(i: number, student : Student) {
+  calculateAmount(i: number, student: Student) {
        this.index = i;
         this.id = student.id;
         
         const dialogRef = this.dialog.open(CalculateDialogComponent, {
-          data: {studentId: student.id, 
-                firstName: student.nombre, 
-                lastName: student.apellido, 
+          data: {id: student.id, 
+            nombre: student.nombre, 
+            apellido: student.apellido, 
                 amount : 0,
-                typeGrade : student.idTipoNivelEstudio,
-                studentCode : student.codigo            
+                idTipoNivelEstudio : student.idTipoNivelEstudio,
+                codigo : student.codigo
               }
         });
         

@@ -14,17 +14,17 @@ export class CalculateDialogComponent implements OnInit {
   @BlockUI() blockUI: NgBlockUI;
 
   constructor(public dialogRef: MatDialogRef<CalculateDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: StudentDto, 
+              @Inject(MAT_DIALOG_DATA) public data: StudentDto,
               public _messageAlertHandleService: MessageAlertHandleService,
               public _studentService: StudentService) { }
 
   ngOnInit() {
       this.blockUI.start();
-      this.calculateAmountStudent(this.data.codigo);
+      this.calculateAmountStudent(this.data.id.toString());
 
   }
 
-  calculateAmountStudent(id: string): void{
+  calculateAmountStudent(id: string): void {
       this._studentService.calculateAmountByStudentId(id).subscribe(
         successData => {
           this.data.scholarship = successData;
@@ -34,7 +34,7 @@ export class CalculateDialogComponent implements OnInit {
           this._messageAlertHandleService.handleError(error);
           this.blockUI.stop();
         },
-        () => {         
+        () => {
         }
       );
   }
